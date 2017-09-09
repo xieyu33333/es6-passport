@@ -1,3 +1,9 @@
+/*
+ * 正则
+ * 修饰器@
+ * Array.from
+ */
+
 const formatText = (key) => {
     return '您填写的' + key + '格式不正确'
 };
@@ -11,9 +17,11 @@ const rules = {
     },
 
     mobile: (v) => {
-        return {
-            type: 'mobile',
-            message: formatText('手机号')
+        if (!v.match(/^1(3|4|5|7|8)\d{9}$/)) {
+            return {
+                type: 'mobile',
+                message: formatText('手机号')
+            }
         }
     },
 
@@ -59,18 +67,23 @@ class FormCheck {
 
         let checkResults = [];
 
-        [].filter.call(elements, (item) => {
+        // [].filter.call(elements, (item) => {
+        /*
+         * Array.from 将array like转为真正的array
+         */
+        Array.from(elements).filter( (item) => {
             return item.getAttribute('valid');
         }).map((item) => {
-            const valids = item.getAttribute('valid').split(',');
+            const valids = item.getAttribute('valid').split(', ');
             const value = item.value;
             let errorArr = [];
-            valids.map((valid) => {
+            valids.forEach((valid) => {
                 if (rules[valid]) {
                     let result = rules[valid](value);
                     result && errorArr.push(result);
                 }
             })
+
 
             // if (this.opts.handle) {
             //     this.opts.handle(item, errorArr);

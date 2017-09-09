@@ -23,7 +23,7 @@ export default () => {
         form: document.getElementById('login-form')
     });
 
-    $loginBtn.onclick = async function () {
+    $loginBtn.onclick = async () => {
         /*
          * 重新提交的时候重置错误提示框
          */

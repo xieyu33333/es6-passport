@@ -8,26 +8,31 @@ const tpl = (opts = {}) => {
     return `<div id="login-wrapper">
         <form id="login-form">
             <label>
-                <span>用户名：</span>
-                <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
-            </label>
-            <label>
-                <span>密码：</span>
+                <span>昵称</span>
                 <input id="login-password" name="password" type="password" placeholder="${ passwordPlaceHolder }">
-            </label>
-            <label>
-                <span>确认密码：</span>
-                <input id="login-password" name="password" type="password" placeholder="${ passwordPlaceHolder }">
-            </label>
-            <label>
-                <span>手机号：</span>
-                <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
             </label>
             <label>
                 <span>电子邮箱：</span>
+                <input id="login-password" name="password" type="password" placeholder="${ passwordPlaceHolder }">
+            </label>
+            <label>
+                <span>真实姓名</span>
                 <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
             </label>
-            <input id="login-btn" type="submit" value="注册">
+            <label>
+                <span>性别</span>
+                <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
+            </label>
+            <label>
+                <span>生日</span>
+                <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
+            </label>
+            <label>
+                <span>居住地</span>
+                <div id="provinceAndCity"></div>
+                <input name="liveAddress">
+            </label>
+            <input id="login-btn" type="submit" value="下一步">
         </form>
     </div>`
 }

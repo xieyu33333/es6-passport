@@ -3,6 +3,7 @@ import "babel-polyfill";
 import 'es6-promise/auto';
 import 'fetch-detector';
 import 'fetch-ie8';
+import regionData = require('./data/region-data.js');
 
 /*
  * 开发环境下使用mock数据, 需要用require
@@ -26,14 +27,14 @@ if (__DEV__) {
         }
     });
 
-    // 获取验证码
-    FetchMock.mock('/verify-code', (url, opts) => {
-        const params = opts.params;
+    // 获取验证token
+    FetchMock.mock('/getMobileVerifyToken', (url, opts) => {
+        return {code: 200, message: 'success', mobileVerifyToken: 'abc123456'};
     });
 
-    // 提交验证码
-    FetchMock.mock('/verify-code', (url, opts) => {
-        const params = opts.params;
+    // 获取省市区数据
+    FetchMock.mock('/region-data', (url, opts) => {
+        return { code: 200, message: 'success', data: regionData }
     });
 
 

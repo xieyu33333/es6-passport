@@ -12,16 +12,13 @@
 </head>
 <body id="login">
     @@include('./templates/header.html', {})
-    @@include('./templates/step.html', {"step": "1"})
+    @@include('./templates/step.html', {"step": "2"})
     <div id="container"></div>
     @@include('./templates/footer.html', {})
-    <script type="text/javascript" src="../js/register/mobile/init.js"></script>
+    <script type="text/javascript" src="../js/register/info/init.js"></script>
     <script type="text/javascript">
-        var registerMobile = pass.regMobile({
-            container: document.getElementById('container'),
-            success: function() {
-                location.replace('register-info.html');
-            }
+        var registerMobile = pass.regInfo({
+            container: document.getElementById('container')
         });
     </script>
 </body>

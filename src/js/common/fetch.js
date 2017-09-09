@@ -2,37 +2,34 @@
  * Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: 'include'})
 服务器返回 400，500 错误码时并不会 reject，只有网络错误这些导致请求不能完成时，fetch 才会被 reject。
  */
-
-const fetchPost = (url, params) => {
-    return fetch(url, {
-        method: 'POST',
-        headers: {
+const fetchOrigin = (type) => {
+    let defaultHeaders = {};
+    let method = 'GET';
+    if (type === 'post') {
+        defaultHeaders = {
             "Content-Type": "application/x-www-form-urlencoded"
-        },
-        credentials: 'include',
-        params: params
-    }).then((res) => {
-        if (!res.ok) {
-            throw Error(res.statusText);
-        }
-        return res.json();
-    });
-};
+        };
+        method = 'POST'
+    }
 
-const fetchJson = (url, params) => {
-    return fetch(url, {
-        method: 'GET',
-        headers: {},
-        credentials: 'include',
-        params: params
-    }).then((res) => {
-        if (!res.ok) {
-            throw Error(res.statusText);
-        }
-        return res.json();
-    });
-};
+    return (url, params) => {
+        return fetch(url, {
+            method: method,
+            mode: "cors",  //cors跨域 no-cors: 返回值不可读，用于img，css等
+            headers: defaultHeaders,
+            credentials: 'include',
+            params: params
+        }).then((res) => {
+            if (!res.ok) {
+                throw Error(res.statusText);
+            }
+            return res.json();
+        });
+    }
+}
 
+const fetchJson = fetchOrigin('json');
+const fetchPost = fetchOrigin('post');
 
 export {fetchPost, fetchJson};
 

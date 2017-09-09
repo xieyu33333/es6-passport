@@ -4,16 +4,7 @@ import bindEvent from './event';
 // import FormCheck from '../common/formCheck';
 const regMobile = (opts = {}) => {
     var defaultOpts = {
-        loginBtnText: '登 录',
-        accountPlaceHolder: '手机号/邮箱/账号',
-        accountLabel: '',
-        passwordPlaceHolder: '请填写密码',
-        passwordLabel: '',
-        verifyPlaceHolder: '验证码',
-        accountMax: '30',
-        passwordMax: '30',
-        showRemember: true,
-        autocomplete: false,
+        mobilePlaceHolder: '请输入您的手机号',
     };
 
     var options = Object.assign(defaultOpts, opts)
