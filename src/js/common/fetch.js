@@ -23,6 +23,7 @@ const fetchOrigin = (type) => {
             if (!res.ok) {
                 throw Error(res.statusText);
             }
+            console.log(res.json());
             return res.json();
         });
     }

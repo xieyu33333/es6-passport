@@ -10,8 +10,8 @@
  * symbol可用于私有方法
  */
 
-import utils from '../common/utils';
-import { fetchJson } from '../../common/fetch';
+import utils from './utils';
+import { fetchJson } from './fetch';
 
 const { domSelector: $ } = utils;
 const render = Symbol('render');
@@ -48,7 +48,7 @@ class Region {
             <input name="${ opts.name }" type="hidden">
         </div>
         `
-        const provinceOptions = '';
+        let provinceOptions = '';
         regionData.forEach((item) => {
             provinceOptions += `<option data="${item.id}">${item.name}</option>`
         });
