@@ -12,8 +12,15 @@ import Region from '../../common/region';
 const { domSelector: $ } = utils;
 
 export default (opts) => {
+    /*
+     * 初始化省市联动选择器
+     * */
     const region = new Region({
-        container: document.getElementById('container'),
+        container: document.getElementById('register-info-address'),
         name: 'region'
-    })
+    });
+
+    /*
+     * 表单校验
+     * */
 }

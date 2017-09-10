@@ -1,38 +1,32 @@
 const tpl = (opts = {}) => {
-    const regBtnText = opts.loginBtnText || '注册';
-    const accountPlaceHolder = opts.accountPlaceHolder || '手机号/邮箱/账号';
-    const accountLabel = opts.accountLabel || '账号：';
-    const passwordPlaceHolder = opts.passwordPlaceHolder || '请填写密码';
-    const passwordLabel = opts.passwordLabel || '密码：';
-
-    return `<div id="login-wrapper">
-        <form id="login-form">
+    
+    return `<div id="register-info-wrapper" class="register-info-wrapper">
+        <form id="register-info-form">
             <label>
-                <span>昵称</span>
-                <input id="login-password" name="password" type="password" placeholder="${ passwordPlaceHolder }">
+                <span>昵称：</span>
+                <input id="register-info-nickname" name="nickname" type="password" placeholder="昵称">
             </label>
             <label>
                 <span>电子邮箱：</span>
-                <input id="login-password" name="password" type="password" placeholder="${ passwordPlaceHolder }">
+                <input id="register-info-email" name="email" type="password" placeholder="电子邮箱">
             </label>
             <label>
-                <span>真实姓名</span>
-                <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
+                <span>真实姓名：</span>
+                <input id="register-info-realname" name="realname" type="text" placeholder="真实姓名">
             </label>
             <label>
-                <span>性别</span>
-                <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
+                <span>性别：</span>
+                <input id="register-info-sex" name="account" type="sex" placeholder="性别">
             </label>
             <label>
-                <span>生日</span>
-                <input id="login-account" name="account" type="text" placeholder="${ accountPlaceHolder }">
+                <span>生日：</span>
+                <input id="register-info-birthday" name="birthday" type="text" placeholder="生日">
             </label>
             <label>
-                <span>居住地</span>
-                <div id="provinceAndCity"></div>
-                <input name="liveAddress">
+                <span>居住地：</span>
+                <div id="register-info-address"></div>
             </label>
-            <input id="login-btn" type="submit" value="下一步">
+            <input id="register-info-btn" type="submit" value="下一步">
         </form>
     </div>`
 }
