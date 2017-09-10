@@ -13,6 +13,7 @@ const { domSelector: $ } = utils;
 
 export default (opts) => {
     const region = new Region({
-        container: document.getElementById('container')
+        container: document.getElementById('container'),
+        name: 'region'
     })
 }
