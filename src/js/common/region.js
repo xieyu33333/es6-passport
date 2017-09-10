@@ -15,10 +15,6 @@ import { fetchJson } from './fetch';
 
 const { domSelector: $ } = utils;
 const render = Symbol('render');
-const style =
-`<style>
-
-</style>`;
 
 // const getRegionData = async function() {
 //     return await fetchJson('/region-data', {});
@@ -50,7 +46,7 @@ class Region {
         /*
          * 渲染基础模板
          */
-        const tpl =  style + `
+        const tpl = `
         <div class="region-select-wrapper">
             <select id="region-province-select"></select>
             <select id="region-city-select"></select>
@@ -80,8 +76,8 @@ class Region {
 
         $provinceSelect.innerHTML = provinceOptions;
 
-        const provinceChange = (index) => {
-            const i = index || parseInt($provinceSelect.value);
+        const provinceChange = () => {
+            const i = parseInt($provinceSelect.value);
             const citys = regionData[i-1].city;
             let cityOptions = '';
             provinceSelected = i;
@@ -92,15 +88,10 @@ class Region {
         }
 
         const cityChange = (index) => {
-            let areas;
-            if (index !== undefined) {
-                areas = regionData[provinceSelected-1].city[index].district;
-            }
-            else {
-                areas = regionData[provinceSelected-1].city.filter((item)=> {
-                    return item.id === parseInt($citySelect.value);
-                })[0].district;
-            }
+            let areas = regionData[provinceSelected-1].city.filter((item)=> {
+                return item.id === parseInt($citySelect.value);
+            })[0].district;
+
             let areaOptions = '';
             citySelected = parseInt($citySelect.value);
             areas.forEach((item) => {
@@ -118,8 +109,8 @@ class Region {
         /*
          * 初始化
          */
-        provinceChange(0);
-        cityChange(0);
+        provinceChange();
+        cityChange();
         areaChange();
 
         /*
@@ -127,7 +118,7 @@ class Region {
          */
         $provinceSelect.onchange = (e) => {
             provinceChange();
-            cityChange(0);
+            cityChange();
             areaChange();
         }
 
