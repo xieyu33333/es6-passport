@@ -92,6 +92,10 @@ var webpackConf = {
         devtool: null,
         cache: false,
         plugins: [
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./manifest.json'),
+            }),
             new HappyPack({
                 id: 'js',
                 cache: false,

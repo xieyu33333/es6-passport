@@ -23,5 +23,6 @@ module.exports = {
       name: 'vendors',
       context: __dirname,
     }),
+    new webpack.optimize.UglifyJsPlugin()
   ],
 };
