@@ -10,9 +10,11 @@ const formatText = (key) => {
 
 const rules = {
     email: (v) => {
-        return {
-            type: 'email',
-            message: formatText('邮箱')
+        if (!v.match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/)) {
+            return {
+                type: 'email',
+                message: formatText('邮箱')
+            }
         }
     },
 

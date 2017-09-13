@@ -1,14 +1,14 @@
 const tpl = (opts = {}) => {
-    
+
     return `<div id="register-info-wrapper" class="register-info-wrapper">
-        <form id="register-info-form">
+        <form id="register-info-form" onsubmit="return false">
             <label>
                 <span>昵称：</span>
-                <input id="register-info-nickname" name="nickname" type="password" placeholder="昵称">
+                <input id="register-info-nickname" name="nickname" type="text" placeholder="昵称" valid="present">
             </label>
             <label>
                 <span>电子邮箱：</span>
-                <input id="register-info-email" name="email" type="password" placeholder="电子邮箱">
+                <input id="register-info-email" name="email" type="text" placeholder="电子邮箱" valid="present, email">
             </label>
             <label>
                 <span>真实姓名：</span>
@@ -16,11 +16,14 @@ const tpl = (opts = {}) => {
             </label>
             <label>
                 <span>性别：</span>
-                <input id="register-info-sex" name="account" type="sex" placeholder="性别">
+                <select id="register-info-sex" name="sex">
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
             </label>
             <label>
                 <span>生日：</span>
-                <input id="register-info-birthday" name="birthday" type="text" placeholder="生日">
+                <input id="register-info-birthday" name="birthday" type="date" placeholder="生日">
             </label>
             <label>
                 <span>居住地：</span>

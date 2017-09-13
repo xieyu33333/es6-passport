@@ -68,6 +68,10 @@ var webpackConf = {
         cache: true,
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./manifest.json'),
+            }),
             new HappyPack({
                 id: 'js',
                 cache: true,

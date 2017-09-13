@@ -49,7 +49,7 @@ export default (opts) => {
             }
         }
         else {
-            let data = await fetchPost('/getMobileVerifyToken', {
+            let data = await fetchPost('/register/mobile', {
                 mobile: $input.value,
                 mobileVerifyToken: mobileVerifyToken
             });

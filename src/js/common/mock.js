@@ -33,7 +33,9 @@ if (__DEV__) {
     });
 
 
-    FetchMock.mock('/register', {code: 200, message: 'success'});
+    FetchMock.mock('/register/mobile', {code: 200, message: 'success'});
+    FetchMock.mock('/register/info', {code: 200, message: 'success'});
+
     FetchMock.mock('/profile', {
         code: 200,
         message: 'success',
