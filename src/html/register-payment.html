@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>注册成功</title>
+    <title>注册-绑定支付方式</title>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -12,14 +12,19 @@
 </head>
 <body id="login">
     @@include('./templates/header.html', {})
-    @@include('./templates/step.html', {"step": "4"})
-    <div id="container">
-        <div class="register-success">
-            <img src="../images/ok-fill.png">
-            注册成功，可以开始您的购物旅程了
-        </div>
-    </div>
+    @@include('./templates/step.html', {"step": "3"})
+    <div id="container"></div>
     @@include('./templates/footer.html', {})
+    <script type="text/javascript" src="../lib/vendors.js"></script>
+    <script type="text/javascript" src="../js/register/payment/init.js"></script>
+    <script type="text/javascript">
+        var registerPayment = pass.regPayment({
+            container: document.getElementById('container'),
+            success: function() {
+                location.replace('register-success.html');
+            }
+        });
+    </script>
 </body>
 </html>
 

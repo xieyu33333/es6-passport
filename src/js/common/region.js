@@ -13,7 +13,7 @@
 import utils from './utils';
 import { fetchJson } from './fetch';
 
-const { domSelector: $ } = utils;
+const { domSelector: $, isArray } = utils;
 const render = Symbol('render');
 
 // const getRegionData = async function() {
@@ -69,14 +69,14 @@ class Region {
         let citySelected;
         let areaSelected;
 
-        let provinceOptions = '';
+        let provinceOptions = '<option></option>';
         regionData.forEach((item) => {
             provinceOptions += `<option value="${item.id}">${item.name}</option>`
         });
 
         $provinceSelect.innerHTML = provinceOptions;
 
-        const provinceChange = () => {
+        const provinceChange = (index) => {
             const i = parseInt($provinceSelect.value);
             const citys = regionData[i-1].city;
             let cityOptions = '';
@@ -85,6 +85,7 @@ class Region {
                 cityOptions += `<option value="${item.id}">${item.name}</option>`
             });
             $citySelect.innerHTML = cityOptions;
+            index && ($provinceSelect.value = index);
         }
 
         const cityChange = (index) => {
@@ -98,20 +99,25 @@ class Region {
                 areaOptions += `<option value="${item.id}">${item.name}</option>`
             });
             $areaSelect.innerHTML = areaOptions;
+            index && ($citySelect.value = index);
         }
 
-        const areaChange = () => {
+        const areaChange = (index) => {
             areaSelected = parseInt($areaSelect.value);
             $result.value = provinceSelected + ',' +
                             citySelected + ',' + areaSelected;
+            index && ($areaSelect.value = index);
         }
 
         /*
          * 初始化
          */
-        provinceChange();
-        cityChange();
-        areaChange();
+        if (opts.initData && isArray(opts.initData)) {
+            const data = opts.initData;
+            data[0] && provinceChange(data[0]);
+            data[1] && cityChange(data[1]);
+            data[2] && areaChange(data[2]);
+        }
 
         /*
          * 事件绑定

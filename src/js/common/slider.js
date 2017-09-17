@@ -61,6 +61,7 @@ const style =
 
 class Slider {
     constructor(opts) {
+        this.opts = opts;
         if (!opts.container) {
             throw '请填写container配置';
         }
@@ -92,7 +93,6 @@ class Slider {
         const $moved = $('#vs-moved-bg');
         const $wrapper = $('#vs-wrapper');
         const $text = $('#vs-text');
-
         const reset = () => {
             this.startX = 0;
             this.start = false;
@@ -125,9 +125,14 @@ class Slider {
 
         window.onmouseup = (e) => {
             if (!this.end) {
-                reset ();
+                reset();
             }
         }
+    }
+
+    reset() {
+        this[render](this.opts);
+        this[bindEvent](this.opts);
     }
 }
 

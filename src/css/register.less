@@ -1,10 +1,30 @@
 @import './common.less';
+.register-tip {
+    font-size: 12px;
+    img {
+        height: 18px;
+        width: 18px;
+        position: relative;
+        top: 4px;
+        margin-right: 3px;
+    }
+}
 
+p.register-tip {
+    margin-left: 16px;
+}
+
+.register-success,
+.register-payment-wrapper,
+.register-verify-form,
 .register-info-wrapper,
 .register-mobile-wrapper {
-    width: 400px;
-    min-height: 350px;
+    width: 600px;
+    padding: 0 100px;
     margin: 60px auto 0 auto;
+    min-height: 350px;
+    position: relative;
+    box-sizing: border-box;
 
     label {
         display: block;
@@ -16,7 +36,7 @@
         > span {
             display: block;
             float: left;
-            width: 20%;
+            width: 22%;
             text-align: right;
         }
 
@@ -155,5 +175,47 @@
                 box-sizing: border-box;
             }
         }
+    }
+}
+
+.register-verify-dialog {
+    position: absolute;
+    z-index: 1000000;
+    margin: auto;
+    background: #ffffff;
+    top: 0;
+    left: 0;
+    width: 600px;
+    box-sizing: border-box;
+    padding: 0 100px;
+    border: 2px solid #dedede;
+    border-top: 2px solid #ff4a00;
+    display: none;
+
+    .register-verify-dialog-header {
+        height: 20px;
+        .register-verify-dialog-close {
+            float: right;
+            background: url('../images/delete.png') no-repeat center;
+            background-size: 60%;
+            height: 24px;
+            width: 24px;
+            position: absolute;
+            right: 6px;
+            top: 8px;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.register-success {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+    img {
+        display: block;
+        height: 100px;
+        margin: 30px auto;
     }
 }

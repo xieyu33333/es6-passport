@@ -19,7 +19,10 @@
     <script type="text/javascript" src="../js/register/info/init.js"></script>
     <script type="text/javascript">
         var registerMobile = pass.regInfo({
-            container: document.getElementById('container')
+            container: document.getElementById('container'),
+            success: function() {
+                location.replace('register-payment.html');
+            }
         });
     </script>
 </body>

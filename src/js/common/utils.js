@@ -29,6 +29,14 @@ const utils = {
             obj.className = obj.className.replace(reg, ' ');
         }
     },
+
+    isArray: function(arg) {
+        return Object.prototype.toString.call(arg) === '[object Array]';
+    },
+
+    isObject: function(arg) {
+        return Object.prototype.toString.call(arg) === '[object Object]';
+    }
 }
 
 export default utils
