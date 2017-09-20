@@ -42,6 +42,41 @@ FetchMock.mock('/region-data', (url, opts) => {
     return { code: 200, message: 'success', data: regionData }
 });
 
+FetchMock.mock('/delivery-address', {
+    code: 200,
+    message: 'success',
+    data: [{
+        name: '张三',
+        regionSting: '北京市东城区',
+        regionCode: '1,1,1',
+        detailAddress: '和平北街334号',
+        postalcode: '100000',
+        mobile: 18512567389,
+        telephone: '',
+        addrId: 345
+    },
+    {
+        name: '张三',
+        regionSting: '北京市西城区',
+        regionCode: '1,1,2',
+        detailAddress: '和平西街234号',
+        postalcode: '100000',
+        mobile: 18512567389,
+        telephone: '',
+        addrId: 346
+    },
+    {
+        name: '李四',
+        regionSting: '上海市静安区',
+        regionCode: '1,1,1',
+        detailAddress: '和平北街334号',
+        postalcode: '100000',
+        mobile: 18517384387,
+        telephone: '',
+        addrId: 347
+    }]
+})
+
 FetchMock.mock('/profile', {
     code: 200,
     message: 'success',
