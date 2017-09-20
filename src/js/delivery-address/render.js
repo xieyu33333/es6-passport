@@ -2,13 +2,15 @@ import { fetchPost } from '../common/fetch';
 import utils from '../common/utils';
 import Region from '../common/region';
 
+const { getUrlParams } = utils;
+
 const tpl = function(opts = {}) {
 
     const data = opts.data;
     let currentData;
     if (opts.addrId) {
         currentData = data.filter((item) => {
-            return opts.addrId === item.addrId
+            return parseInt(opts.addrId) === item.addrId
         })[0];
     }
     else {
@@ -90,7 +92,7 @@ const tpl = function(opts = {}) {
                 ${ item.mobile || item.telephone }
             </td>
             <td>
-                <a href="javascript:void(0);">删除</a> | <a href="/delivery-address?addrId=${item.addrId}">修改</a>
+                <a href="javascript:void(0);" data-id="${item.addrId}">删除</a> | <a href="/html/delivery-address.html?addrId=${item.addrId}">修改</a>
             </td>
         <tr>`
     })
@@ -102,9 +104,12 @@ const tpl = function(opts = {}) {
 export default async (conf) => {
     const result = await fetchPost('/delivery-address', {});
     if (result.code === 200) {
-        conf.container.innerHTML = tpl({data: result.data});
+        conf.container.innerHTML = tpl({
+            data: result.data,
+            addrId: getUrlParams('addrId')
+        });
     }
     else {
-        conf.container.innerHTML = tpl({data: result.data});
+        alert('数据拉取失败');
     }
 }

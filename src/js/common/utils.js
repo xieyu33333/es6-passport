@@ -3,6 +3,21 @@ const utils = {
         return window.document.querySelector(selector);
     },
 
+    getUrlParams: (key) => {
+        const query = location.search.replace(/^\?/, '');
+        let obj = {};
+        query.split('&').map((item) => {
+            let tmp = item.split('=');
+            obj[tmp[0]] = tmp[1];
+        })
+        if (!key) {
+            return obj;
+        }
+        else {
+            return obj[key];
+        }
+    },
+
     obj2query: (obj) => {
         if (!obj) {
             return;
