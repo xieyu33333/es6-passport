@@ -10,7 +10,7 @@ import FormCheck from '../common/form-check';
  */
 const { domSelector: $ } = utils;
 
-export default () => {
+export default (opts) => {
     const $loginBtn = $('#login-btn');
     const $remember = $('#login-remember');
     const $clearAccount = $('#clear-account');
@@ -55,6 +55,7 @@ export default () => {
             console.log(data);
             if (data.code === 200) {
                 alert('登录成功');
+                opts.success && opts.success();
             }
             else {
                 $error.innerHTML = data.message;

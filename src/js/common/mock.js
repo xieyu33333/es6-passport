@@ -68,7 +68,7 @@ FetchMock.mock('/delivery-address', {
     {
         name: '李四',
         regionSting: '上海市静安区',
-        regionCode: '1,1,1',
+        regionCode: '9,73,723',
         detailAddress: '和平北街334号',
         postalcode: '100000',
         mobile: 18517384387,

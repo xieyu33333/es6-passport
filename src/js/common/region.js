@@ -77,7 +77,7 @@ class Region {
         $provinceSelect.innerHTML = provinceOptions;
 
         const provinceChange = (index) => {
-            const i = parseInt($provinceSelect.value);
+            const i = index ? index : parseInt($provinceSelect.value);
             const citys = regionData[i-1].city;
             let cityOptions = '';
             provinceSelected = i;

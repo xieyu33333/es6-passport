@@ -3,6 +3,7 @@ import utils from '../common/utils';
 import Region from '../common/region';
 
 const { getUrlParams } = utils;
+let regionData;
 
 const tpl = function(opts = {}) {
 
@@ -12,6 +13,7 @@ const tpl = function(opts = {}) {
         currentData = data.filter((item) => {
             return parseInt(opts.addrId) === item.addrId
         })[0];
+        regionData = currentData.regionCode ? currentData.regionCode.split(',').map((item) => parseInt(item)) : '';
     }
     else {
         currentData = {};
@@ -27,7 +29,7 @@ const tpl = function(opts = {}) {
             </label>
             <label>
                 <span>详细地址：</span>
-                <textarea id="delivery-address-detail" name="detailAddress"  placeholder="详细地址" valid="present">${currentData.detailAddress || ''}</textarea>
+                <textarea id="delivery-address-detail" name="detailAddress"  placeholder="详细地址" valid="present" rows="3" cols="20">${currentData.detailAddress || ''}</textarea>
             </label>
             <label>
                 <span>邮政编码：</span>
@@ -45,8 +47,11 @@ const tpl = function(opts = {}) {
                 <span>固定电话：</span>
                 <input id="delivery-address-telphone" name="telphone" type="text" placeholder="固话号码" value="${currentData.telephone || ''}">
             </label>
+            <label>
+                <span>&nbsp;</span>
+                <input id="save-delivery-address" type="submit" value="保存">
+            </label>
 
-            <input id="save-delivery-address" type="submit" value="保存">
         </form>
 
         <div class="delivery-address-list" id="delivery-address-list">
@@ -99,6 +104,7 @@ const tpl = function(opts = {}) {
     tpl += `</table>
         </div>
     </div>`
+
     return tpl;
 }
 export default async (conf) => {
@@ -107,6 +113,11 @@ export default async (conf) => {
         conf.container.innerHTML = tpl({
             data: result.data,
             addrId: getUrlParams('addrId')
+        });
+        const region = new Region({
+            container: document.getElementById('delivery-address-region'),
+            name: 'region',
+            initData: regionData
         });
     }
     else {

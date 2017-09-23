@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 const vendors = [
   'es5-shim',
@@ -10,7 +11,7 @@ const vendors = [
 
 module.exports = {
   output: {
-    path: 'src/lib',
+    path: path.join(__dirname, 'src/lib'),
     filename: 'vendors.js',
     library: 'vendors',
   },
