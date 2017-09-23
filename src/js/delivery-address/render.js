@@ -1,4 +1,4 @@
-import { fetchPost } from '../common/fetch';
+import { fetchJson } from '../common/fetch';
 import utils from '../common/utils';
 import Region from '../common/region';
 
@@ -108,7 +108,7 @@ const tpl = function(opts = {}) {
     return tpl;
 }
 export default async (conf) => {
-    const result = await fetchPost('/delivery-address', {});
+    const result = await fetchJson('/delivery-address', {});
     if (result.code === 200) {
         conf.container.innerHTML = tpl({
             data: result.data,

@@ -81,13 +81,14 @@ FetchMock.mock('/profile', {
     code: 200,
     message: 'success',
     data: {
-        uname: 'xiaoming',
-        address: { country: 'china',
-                   province: 'beijing',
-                   city: 'beijing',
-                   street: ''},
+        nickname: 'xiaoming',
+        regionSting: '上海市静安区',
+        regionCode: '9,73,723',
         mobile: '18567286637',
         email: 'xiaomong@163.com',
+        birthday: '2017-09-06',
+        realname: '李明',
+        sex: 1
     }
 });
 

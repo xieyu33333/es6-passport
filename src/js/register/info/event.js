@@ -4,7 +4,6 @@
 import { fetchPost } from '../../common/fetch';
 import utils from '../../common/utils';
 import FormCheck from '../../common/form-check';
-import Region from '../../common/region';
 
 /*
  * 解构运算, 解构重命名
@@ -23,13 +22,7 @@ export default (opts) => {
         'nickname': '昵称',
         'email': '电子邮箱'
     }
-    /*
-     * 初始化省市联动选择器
-     * */
-    const region = new Region({
-        container: document.getElementById('register-info-address'),
-        name: 'region'
-    });
+
 
     /*
      * 点击提交
