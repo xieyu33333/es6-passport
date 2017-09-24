@@ -27,6 +27,9 @@
     <script type="text/javascript">
         var delivery = pass.delivery({
             container: document.getElementById('profile-wrap'),
+            success: function () {
+                location.reload();
+            }
         })
     </script>
 </body>

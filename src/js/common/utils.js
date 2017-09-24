@@ -51,6 +51,50 @@ const utils = {
 
     isObject: function(arg) {
         return Object.prototype.toString.call(arg) === '[object Object]';
+    },
+
+    /*
+     * 事件绑定or代理，
+     * bindEvent(el, event fn)  //事件直接绑定
+     * bindEvent(el, event, classSelector fn) //事件代理
+     */
+    bindEvent: function () {
+        let target;
+        let selector;
+        let fn;
+        const findNode = (el, selector, endel) =>  {
+            if (el === endel) {
+                return;
+            }
+            // console.log(el, tagName);
+            if (document.querySelector(selector).className === el.className) {
+                target = el;
+            }
+            else {
+                findNode(el.parentNode, selector, endel);
+            }
+        };
+        const el = arguments[0];
+        const type = arguments[1];
+        if (typeof arguments[2] === 'string') {
+            selector = arguments[2];
+            if (typeof arguments[3] === 'function') {
+                fn = arguments[3];
+            }
+        }
+        else if (typeof arguments[2] === 'function') {
+            fn = arguments[2];
+        }
+
+        el.addEventListener(type, function (e) {
+            if (!selector) {
+                fn.call(el, e);
+            }
+            else if (selector) {
+                findNode(e.target, selector, el);
+                target && fn.call(target, {target: target});
+            }
+        });
     }
 }
 

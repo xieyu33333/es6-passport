@@ -36,6 +36,8 @@ FetchMock.mock('/register/mobile', (url, opts) => {
     }
 });
 FetchMock.mock('/register/info', {code: 200, message: 'success'});
+FetchMock.mock('/save-delivery', {code: 200, message: 'success'});
+FetchMock.mock('/del-delivery', {code: 200, message: 'success'});
 
 // 获取省市区数据
 FetchMock.mock('/region-data', (url, opts) => {
@@ -89,6 +91,19 @@ FetchMock.mock('/profile', {
         birthday: '2017-09-06',
         realname: '李明',
         sex: 1
+    }
+});
+
+FetchMock.mock('/security-info', {
+    code: 200,
+    message: 'success',
+    data: {
+        nickname: 'xiaoming',
+        mobile: '18567286637',
+        email: 'xiaomong@163.com',
+        password: 1,
+        identity: 1,
+        secretQuestion: 0
     }
 });
 

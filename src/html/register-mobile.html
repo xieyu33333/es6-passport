@@ -18,10 +18,30 @@
     <script type="text/javascript" src="../lib/vendors.js"></script>
     <script type="text/javascript" src="../js/register/mobile/init.js"></script>
     <script type="text/javascript">
+        var getUrlParams = function(key) {
+            const query = location.search.replace(/^\?/, '');
+            let obj = {};
+            query.split('&').map((item) => {
+                let tmp = item.split('=');
+                obj[tmp[0]] = tmp[1];
+            })
+            if (!key) {
+                return obj;
+            }
+            else {
+                return obj[key];
+            }
+        };
         var registerMobile = pass.regMobile({
             container: document.getElementById('container'),
             success: function() {
-                location.replace('register-info.html');
+                if (getUrlParams('bind')) {
+                    location.replace('mobilebind-success.html');
+                }
+                else {
+                    location.replace('register-info.html');
+                }
+
             }
         });
     </script>

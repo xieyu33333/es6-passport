@@ -51,7 +51,7 @@ class Region {
             <select id="region-province-select"></select>
             <select id="region-city-select"></select>
             <select id="region-area-select"></select>
-            <input id="region-selected" name="${ opts.name }" type="hidden">
+            <input id="region-selected" name="${ opts.name }" type="hidden" valid="${ opts.present ? 'present' : ''}">
         </div>
         `
         opts.container.innerHTML = tpl;

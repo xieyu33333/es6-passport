@@ -1,6 +1,7 @@
 import { fetchJson } from '../common/fetch';
 import utils from '../common/utils';
 import Region from '../common/region';
+import bindEvent from './event';
 
 const { getUrlParams } = utils;
 let regionData;
@@ -37,11 +38,11 @@ const tpl = function(opts = {}) {
             </label>
             <label>
                 <span>收货人姓名：</span>
-                <input id="delivery-address-name" name="name" type="text" placeholder="真实姓名" value="${currentData.name || ''}">
+                <input id="delivery-address-name" name="name" type="text" placeholder="真实姓名" value="${currentData.name || ''}" valid="present">
             </label>
             <label>
                 <span>手机号码：</span>
-                <input id="delivery-address-mobile" name="mobile" type="text" placeholder="手机号码" value="${currentData.mobile || ''}">
+                <input id="delivery-address-mobile" name="mobile" type="text" placeholder="手机号码" value="${currentData.mobile || ''}" valid="present, mobile">
             </label>
             <label>
                 <span>固定电话：</span>
@@ -97,7 +98,7 @@ const tpl = function(opts = {}) {
                 ${ item.mobile || item.telephone }
             </td>
             <td>
-                <a href="javascript:void(0);" data-id="${item.addrId}">删除</a> | <a href="/html/delivery-address.html?addrId=${item.addrId}">修改</a>
+                <a href="javascript:void(0);" class="del-delivery-address" data-id="${item.addrId}">删除</a> | <a href="/html/delivery-address.html?addrId=${item.addrId}">修改</a>
             </td>
         <tr>`
     })
@@ -117,8 +118,10 @@ export default async (conf) => {
         const region = new Region({
             container: document.getElementById('delivery-address-region'),
             name: 'region',
+            present: true,
             initData: regionData
         });
+        bindEvent(conf);
     }
     else {
         alert('数据拉取失败');

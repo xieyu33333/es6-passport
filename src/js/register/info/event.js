@@ -50,7 +50,6 @@ export default (opts) => {
         else {
             let data = await fetchPost('/register/info', formValues);
             if (data.code === 200) {
-                location.replace('register-bind.html');
                 opts.success && opts.success();
             }
         }
