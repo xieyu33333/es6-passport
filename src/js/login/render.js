@@ -39,8 +39,8 @@ const tpl = (opts = {}) => {
                 <input id="login-btn" class="login-btn" type="submit" value="${ opts.loginBtnText }">
             </form>
             <div class="login-extra-wrapper">
-                <a href="/html/forget.html">忘记密码</a>
-                <a href="/html/register-mobile.html">免费注册</a>
+                <a href="forget.html">忘记密码</a>
+                <a href="register-mobile.html">免费注册</a>
             </div>
         </div>`
 
