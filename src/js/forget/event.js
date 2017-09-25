@@ -1,7 +1,7 @@
 /*
  * export {xx, yy} 可以这样import, export obj则不行，新的babel禁止
  */
-import { fetchJson } from '../common/fetch';
+import { fetchJson, fetchPost } from '../common/fetch';
 import utils from '../common/utils';
 import FormCheck from '../common/form-check';
 import findTpl  from './findTpl.js';
@@ -9,7 +9,7 @@ import findTpl  from './findTpl.js';
 /*
  * 解构运算, 解构重命名
  */
-const { domSelector: $ } = utils;
+const { domSelector: $, addClass, removeClass } = utils;
 
 export default async (opts) => {
     const $chooseMobile = $('#choose-mobile');
@@ -25,6 +25,7 @@ export default async (opts) => {
         const $verifyInput = $('#forget-verify-input');
         const $forgetBtn = $('#forget-confirm-btn');
         const $number = $('#forget-verify-number');
+        const $close = $('#forget-dialog-close');
 
         $verifyInput.oninput = () => {
             const MSGLENGTH = 6;
@@ -33,17 +34,17 @@ export default async (opts) => {
             $verifyInput.value = value.replace(/\D/g, '');
             //长度过滤
             if ($verifyInput.value.length > (MSGLENGTH - 1)) {
-                $mobileBtn.removeAttribute('disabled');
-                removeClass($mobileBtn, 'disabled');
-                addClass($mobileBtn, 'btn-primary');
+                $forgetBtn.removeAttribute('disabled');
+                removeClass($forgetBtn, 'disabled');
+                addClass($forgetBtn, 'btn-primary');
                 if (value.length > MSGLENGTH) {
                     $verifyInput.value = value.substring(0, MSGLENGTH);
                 }
             }
             else {
-                removeClass($mobileBtn, 'btn-primary');
-                addClass($mobileBtn, 'disabled');
-                $mobileBtn.setAttribute('disabled', 'disabled');
+                removeClass($forgetBtn, 'btn-primary');
+                addClass($forgetBtn, 'disabled');
+                $forgetBtn.setAttribute('disabled', 'disabled');
             }
         }
 

@@ -107,6 +107,16 @@ FetchMock.mock('/security-info', {
     }
 });
 
+FetchMock.mock('/forget', (url, opts) => {
+    const params = opts.params;
+    if (params.verifyCode === '123456') {
+        return {code: 200, message: 'success'}
+    }
+    else {
+        return {code: 400, message: 'invalid verifyCode'}
+    }
+});
+
 // // 其他路由使用原生fetch，这段代码必须放最后
 FetchMock.mock('*', (url, options) => {
   FetchMock.restore();
