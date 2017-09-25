@@ -82,7 +82,7 @@ var webpackConf = {
             library: 'pass',
             libraryTarget: 'umd'
         },
-        devtool: null,
+        devtool: false,
         cache: false,
         plugins: [
             new webpack.DllReferencePlugin({

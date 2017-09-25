@@ -1,6 +1,5 @@
 .happy/
 .happypack/
 dev/
-dist/
 node_modules/
 npm-debug.log

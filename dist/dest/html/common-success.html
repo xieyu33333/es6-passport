@@ -1,0 +1,32 @@
+<!DOCTYPE HTML><html lang=zh-CN><head><meta charset=UTF-8><title>操作成功</title><meta name=viewport content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><meta name=keywords><meta name=description><meta name=apple-mobile-web-app-capable content=no><meta name=format-detection content="telephone=no"><link rel=stylesheet type=text/css href="../css/common-success.css?v=1506318252134"></head><body id=login><div class=header><div class=brand><img src=../images/logo.png></div></div><div id=container><div class=register-success><img src=../images/ok-fill.png> <span id=text-container></span></div></div><div class=footer>© 2017 imooc.com 京ICP备 13046642号-2</div><script type=text/javascript>
+    window.onload = function() {
+        var setfooterHeight = function() {
+            document.querySelector('.footer').style.marginTop = '0px';
+            if (window.innerHeight > document.body.offsetHeight) {
+                document.querySelector('.footer').style.marginTop = (window.innerHeight - document.body.offsetHeight) + 'px';
+            }
+        }
+
+        setfooterHeight();
+        window.addEventListener('resize', function(e) {
+            setfooterHeight();
+        })
+    }
+</script><script>
+        var container = document.querySelector('#text-container');
+        var getUrlParams = function(key) {
+            const query = location.search.replace(/^\?/, '');
+            let obj = {};
+            query.split('&').map((item) => {
+                let tmp = item.split('=');
+                obj[tmp[0]] = tmp[1];
+            })
+            if (!key) {
+                return obj;
+            }
+            else {
+                return obj[key];
+            }
+        };
+        container.innerText = decodeURIComponent(getUrlParams('text'));
+    </script></body></html>
