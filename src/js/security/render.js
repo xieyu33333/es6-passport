@@ -15,7 +15,7 @@ const tpl = (data = {}) => {
                         <td>登录邮箱</td>
                         <td>${ data.email || '还没有设置邮箱' }</td>
                         <td>${ data.email ?
-                            '<a href="#">修改邮箱</a>' :
+                            '<a href="/html/profile.html">修改邮箱</a>' :
                             '<a href="/html/profile.html">设置邮箱</a>' }
                         </td>
                     </tr>

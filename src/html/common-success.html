@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>手机绑定成功</title>
+    <title>操作成功</title>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -15,10 +15,28 @@
     <div id="container">
         <div class="register-success">
             <img src="../images/ok-fill.png">
-            手机号绑定成功
+            <span id="text-container"></span>
         </div>
     </div>
     @@include('./templates/footer.html', {})
+    <script>
+        var container = document.querySelector('#text-container');
+        var getUrlParams = function(key) {
+            const query = location.search.replace(/^\?/, '');
+            let obj = {};
+            query.split('&').map((item) => {
+                let tmp = item.split('=');
+                obj[tmp[0]] = tmp[1];
+            })
+            if (!key) {
+                return obj;
+            }
+            else {
+                return obj[key];
+            }
+        };
+        container.innerText = decodeURIComponent(getUrlParams('text'));
+    </script>
 </body>
 </html>
 

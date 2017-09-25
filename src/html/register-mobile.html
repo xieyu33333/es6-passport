@@ -32,11 +32,18 @@
                 return obj[key];
             }
         };
+        if (getUrlParams('bind') || getUrlParams('forget')) {
+            document.querySelector('.register-steps').style.display = 'none';
+            document.querySelector('title').innerText = '手机验证';
+        }
         var registerMobile = pass.regMobile({
             container: document.getElementById('container'),
             success: function() {
                 if (getUrlParams('bind')) {
-                    location.replace('mobilebind-success.html');
+                    location.replace('common-success.html?text=手机号绑定成功');
+                }
+                else if (getUrlParams('forget')){
+                    location.replace('common-success.html?text=手机号验证成功，已将重置链接通过短信发送到您的手机');
                 }
                 else {
                     location.replace('register-info.html');
