@@ -98,7 +98,7 @@ const tpl = function(opts = {}) {
                 ${ item.mobile || item.telephone }
             </td>
             <td>
-                <a href="javascript:void(0);" class="del-delivery-address" data-id="${item.addrId}">删除</a> | <a href="/html/delivery-address.html?addrId=${item.addrId}">修改</a>
+                <a href="javascript:void(0);" class="del-delivery-address" data-id="${item.addrId}">删除</a> | <a href="delivery-address.html?addrId=${item.addrId}">修改</a>
             </td>
         <tr>`
     })
