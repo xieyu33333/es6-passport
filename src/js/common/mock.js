@@ -117,6 +117,13 @@ FetchMock.mock('/forget', (url, opts) => {
     }
 });
 
+FetchMock.mock('/send-forget-verifycode', {
+    code: 200,
+    message: 'success'
+});
+
+
+
 // // 其他路由使用原生fetch，这段代码必须放最后
 FetchMock.mock('*', (url, options) => {
   FetchMock.restore();
